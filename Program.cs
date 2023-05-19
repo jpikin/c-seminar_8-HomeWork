@@ -9,6 +9,77 @@
 // 9 5 3 2
 // 8 4 4 2
 
+void BubbleSort(int[] inArray)
+        {
+            for (int i = 0; i < inArray.Length; i++)
+                for (int j = 0; j < inArray.Length - i - 1; j++)
+                {
+                    if (inArray[j] < inArray[j + 1])
+                    {
+                        int temp = inArray[j];
+                        inArray[j] = inArray[j + 1];
+                        inArray[j + 1] = temp;
+                    }
+                }
+        }
+
+int [,] GetArray(int num, int column)
+{
+    int [,] arr = new int[num,column];
+    return arr;
+}
+
+int GetRandom()
+{
+    return new Random().Next(1, 20);
+}
+
+int [,] FillArray(int [,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            arr[i,j] = GetRandom();
+        }
+    }
+    return arr;
+}
+
+int [,] SortArray(int [,] arr)
+    {
+        int [] tempArray = new int[arr.GetLength(1)];
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                tempArray[j] = arr[i,j];    
+            }
+            BubbleSort(tempArray);
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                arr[i,j] = tempArray[j];    
+            }    
+        }
+        return arr;
+    }
+
+void PrintArray(int [,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write(arr[i,j] + "    ");
+        }
+    Console.WriteLine(); 
+    }   
+}
+
+int [,] array = GetArray(3, 4);
+FillArray(array);
+SortArray(array);
+PrintArray(array);
 
 
 // Задача 56: Задайте прямоугольный двумерный массив.
