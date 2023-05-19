@@ -9,19 +9,117 @@
 // 9 5 3 2
 // 8 4 4 2
 
-void BubbleSort(int[] inArray)
+// void BubbleSort(int[] arr)
+//         {
+//             for (int i = 0; i < arr.Length; i++)
+//                 for (int j = 0; j < arr.Length - i - 1; j++)
+//                 {
+//                     if (arr[j] < arr[j + 1])
+//                     {
+//                         int temp = arr[j];
+//                         arr[j] = arr[j + 1];
+//                         arr[j + 1] = temp;
+//                     }
+//                 }
+//         }
+
+// int [,] GetArray(int num, int column)
+// {
+//     int [,] arr = new int[num,column];
+//     return arr;
+// }
+
+// int GetRandom()
+// {
+//     return new Random().Next(1, 20);
+// }
+
+// int [,] FillArray(int [,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             arr[i,j] = GetRandom();
+//         }
+//     }
+//     return arr;
+// }
+
+// int [,] SortArray(int [,] arr)
+//     {
+//         int [] tempArray = new int[arr.GetLength(1)];
+//         for (int i = 0; i < arr.GetLength(0); i++)
+//         {
+//             for (int j = 0; j < arr.GetLength(1); j++)
+//             {
+//                 tempArray[j] = arr[i,j];    
+//             }
+//             BubbleSort(tempArray);
+//             for (int j = 0; j < arr.GetLength(1); j++)
+//             {
+//                 arr[i,j] = tempArray[j];    
+//             }    
+//         }
+//         return arr;
+//     }
+
+// void PrintArray(int [,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i,j] + "    ");
+//         }
+//     Console.WriteLine(); 
+//     }   
+// }
+
+// int [,] array = GetArray(3, 4);
+// FillArray(array);
+// SortArray(array);
+// PrintArray(array);
+
+
+// Задача 56: Задайте прямоугольный двумерный массив.
+// Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+// Например, задан массив:
+
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+
+// Программа считает сумму элементов в каждой строке
+// и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+
+int GetMinStringSum(int [,] arr)
+{
+    int [] tempArray = new int[arr.GetLength(0)];
+    int sum = 0;
+    int index = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            for (int i = 0; i < inArray.Length; i++)
-                for (int j = 0; j < inArray.Length - i - 1; j++)
-                {
-                    if (inArray[j] < inArray[j + 1])
-                    {
-                        int temp = inArray[j];
-                        inArray[j] = inArray[j + 1];
-                        inArray[j + 1] = temp;
-                    }
-                }
+            sum += arr[i,j];    
         }
+        tempArray[i] = sum;
+        sum = 0;
+    }
+    sum = tempArray[0];
+    for (int i = 1; i < tempArray.Length; i++)
+        {
+            if (sum > tempArray[i])
+            {
+                sum = tempArray[i];
+                index = i;
+            }            
+        }   
+    return index;
+}
 
 int [,] GetArray(int num, int column)
 {
@@ -31,7 +129,7 @@ int [,] GetArray(int num, int column)
 
 int GetRandom()
 {
-    return new Random().Next(1, 20);
+    return new Random().Next(1, 9);
 }
 
 int [,] FillArray(int [,] arr)
@@ -46,23 +144,10 @@ int [,] FillArray(int [,] arr)
     return arr;
 }
 
-int [,] SortArray(int [,] arr)
-    {
-        int [] tempArray = new int[arr.GetLength(1)];
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                tempArray[j] = arr[i,j];    
-            }
-            BubbleSort(tempArray);
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                arr[i,j] = tempArray[j];    
-            }    
-        }
-        return arr;
-    }
+void PrintResult(int [,] arr)
+{
+    Console.WriteLine($"Строка {GetMinStringSum(arr)}"); 
+}
 
 void PrintArray(int [,] arr)
 {
@@ -78,22 +163,10 @@ void PrintArray(int [,] arr)
 
 int [,] array = GetArray(3, 4);
 FillArray(array);
-SortArray(array);
 PrintArray(array);
+Console.WriteLine();
+PrintResult(array);
 
-
-// Задача 56: Задайте прямоугольный двумерный массив.
-// Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-
-// Например, задан массив:
-
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// 5 2 6 7
-
-// Программа считает сумму элементов в каждой строке
-// и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
 // Задача 58: Задайте две матрицы. Напишите программу,
 // которая будет находить произведение двух матриц.
