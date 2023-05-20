@@ -256,6 +256,55 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
+// int [,,] GetRandomArray()
+// {
+//     int a = new Random().Next(3, 5),
+//         b = new Random().Next(3, 5),
+//         c = new Random().Next(3, 5);
+//     int [,,] arr = new int[a,b,c];
+//     return arr;
+// }
+
+// int [,,] FillArray(int[,,] arr)
+// {
+//     List<int> lst = new List<int>(arr.GetLength(0)*arr.GetLength(1)*arr.GetLength(2)){0};
+//     int temp = 0;
+    
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             for (int k = 0; k < arr.GetLength(2); k++)
+//             {
+//                 while (lst.Contains(temp))
+//                     {
+//                         temp = new Random().Next(10, 100);
+//                     }
+//                 lst.Add(temp);
+//                 arr[i,j,k] = temp;
+//             }
+//         }
+//     }
+//     return arr;
+// }
+// void PrintResult(int [,,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             for (int k = 0; k < arr.GetLength(2); k++)
+//             {
+//                 Console.Write($"{arr[i,j,k]}({i},{j},{k}) "); 
+//             }
+//             Console.WriteLine();
+//         }
+//     }
+// }
+// int [,,] array = GetRandomArray();
+// FillArray(array);
+// PrintResult(array);
+
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
 // 01 02 03 04
