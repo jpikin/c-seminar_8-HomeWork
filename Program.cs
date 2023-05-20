@@ -76,10 +76,10 @@
 //     }   
 // }
 
-// int [,] array = GetArray(3, 4);
-// FillArray(array);
-// SortArray(array);
-// PrintArray(array);
+// int [,] arr = GetArray(3, 4);
+// FillArray(arr);
+// SortArray(arr);
+// PrintArray(arr);
 
 
 // Задача 56: Задайте прямоугольный двумерный массив.
@@ -161,11 +161,11 @@
 //     }   
 // }
 
-// int [,] array = GetArray(3, 4);
-// FillArray(array);
-// PrintArray(array);
+// int [,] arr = GetArray(3, 4);
+// FillArray(arr);
+// PrintArray(arr);
 // Console.WriteLine();
-// PrintResult(array);
+// PrintResult(arr);
 
 
 // Задача 58: Задайте две матрицы. Напишите программу,
@@ -301,9 +301,9 @@
 //         }
 //     }
 // }
-// int [,,] array = GetRandomArray();
-// FillArray(array);
-// PrintResult(array);
+// int [,,] arr = GetRandomArray();
+// FillArray(arr);
+// PrintResult(arr);
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
@@ -311,3 +311,46 @@
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
+
+int [,] FillArray(int [,] arr)
+{
+    int count = 1;
+    for (int j = 0; j < arr.GetLength(1);j++)
+        arr[0,j] = count++;
+
+    for (int i = 1; i < arr.GetLength(0); i++)
+        arr[i, arr.GetLength(1)-1] = count++;
+
+    for (int j = arr.GetLength(1)-2; j >=0; j--)      
+        arr[arr.GetLength(0)-1, j] = count++;
+
+    for (int i = arr.GetLength(0)-2; i >=1; i--)
+        arr[i, 0] = count++;    
+
+    for (int j = 1; j < arr.GetLength(1)-1; j++)
+        arr[1, j] = count++;
+
+    for (int j = arr.GetLength(1)-2; j >= 1; j--)
+        arr[2,j] = count++;
+        
+    return arr;
+}
+
+void PrintArray(int [,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            string result = string.Format("{0:d2}", arr[i,j]);
+            Console.Write(result + "  ");
+        }
+    Console.WriteLine(); 
+    }
+    Console.WriteLine();   
+}
+
+int [,] arr = new int[4,4];
+
+FillArray(arr);
+PrintArray(arr);
