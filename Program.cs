@@ -95,77 +95,77 @@
 // Программа считает сумму элементов в каждой строке
 // и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-int GetMinStringSum(int [,] arr)
-{
-    int [] tempArray = new int[arr.GetLength(0)];
-    int sum = 0;
-    int index = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            sum += arr[i,j];    
-        }
-        tempArray[i] = sum;
-        sum = 0;
-    }
-    sum = tempArray[0];
-    for (int i = 1; i < tempArray.Length; i++)
-        {
-            if (sum > tempArray[i])
-            {
-                sum = tempArray[i];
-                index = i;
-            }            
-        }   
-    return index;
-}
+// int GetMinStringSum(int [,] arr)
+// {
+//     int [] tempArray = new int[arr.GetLength(0)];
+//     int sum = 0;
+//     int index = 0;
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             sum += arr[i,j];    
+//         }
+//         tempArray[i] = sum;
+//         sum = 0;
+//     }
+//     sum = tempArray[0];
+//     for (int i = 1; i < tempArray.Length; i++)
+//         {
+//             if (sum > tempArray[i])
+//             {
+//                 sum = tempArray[i];
+//                 index = i;
+//             }            
+//         }   
+//     return index;
+// }
 
-int [,] GetArray(int num, int column)
-{
-    int [,] arr = new int[num,column];
-    return arr;
-}
+// int [,] GetArray(int num, int column)
+// {
+//     int [,] arr = new int[num,column];
+//     return arr;
+// }
 
-int GetRandom()
-{
-    return new Random().Next(1, 9);
-}
+// int GetRandom()
+// {
+//     return new Random().Next(1, 9);
+// }
 
-int [,] FillArray(int [,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            arr[i,j] = GetRandom();
-        }
-    }
-    return arr;
-}
+// int [,] FillArray(int [,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             arr[i,j] = GetRandom();
+//         }
+//     }
+//     return arr;
+// }
 
-void PrintResult(int [,] arr)
-{
-    Console.WriteLine($"Строка {GetMinStringSum(arr)}"); 
-}
+// void PrintResult(int [,] arr)
+// {
+//     Console.WriteLine($"Строка {GetMinStringSum(arr)}"); 
+// }
 
-void PrintArray(int [,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            Console.Write(arr[i,j] + "    ");
-        }
-    Console.WriteLine(); 
-    }   
-}
+// void PrintArray(int [,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i,j] + "    ");
+//         }
+//     Console.WriteLine(); 
+//     }   
+// }
 
-int [,] array = GetArray(3, 4);
-FillArray(array);
-PrintArray(array);
-Console.WriteLine();
-PrintResult(array);
+// int [,] array = GetArray(3, 4);
+// FillArray(array);
+// PrintArray(array);
+// Console.WriteLine();
+// PrintResult(array);
 
 
 // Задача 58: Задайте две матрицы. Напишите программу,
@@ -176,6 +176,76 @@ PrintResult(array);
 // Результирующая матрица будет:
 // 18 20
 // 15 18
+
+// int [,] GetArray(int num, int column)
+// {
+//     int [,] arr = new int[num,column];
+//     return arr;
+// }
+
+// int [,] FillArray(int [,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             arr[i,j] = new Random().Next(1, 9);
+//         }
+//     }
+//     return arr;
+// }
+
+// void FindResult(int [,] arr1, int [,] arr2)
+// {
+//     if (arr1.GetLength(0) != arr2.GetLength(1))
+//     {
+//         Console.WriteLine("Умножение матриц невозможно");
+//     }
+//     else
+//     {
+//         MatrixMultiplication(arr1, arr2);
+//     }
+// }
+
+// void MatrixMultiplication(int [,] array1, int [,] array2)
+// {
+//     int [,] arrayResult = new int [array1.GetLength(0),array2.GetLength(1)];
+//     for (int i = 0; i < array1.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array2.GetLength(1); j++)
+//         {
+//             for (int k = 0; k < array1.GetLength(1); k++)
+//             {
+//                 arrayResult[i, j] += array1[i, k] * array2[k, j];
+//             }
+//         }
+//     }
+//     PrintArray(arrayResult); 
+// }
+
+// void PrintArray(int [,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i,j] + "    ");
+//         }
+//     Console.WriteLine(); 
+//     }
+//     Console.WriteLine();   
+// }
+
+// int [,] matrix1 = GetArray(2,2),
+//         matrix2 = GetArray(2,2);
+        
+// FillArray(matrix1);
+// PrintArray(matrix1);
+// FillArray(matrix2);
+// PrintArray(matrix2);
+// FindResult(matrix1, matrix2);
+
+
 
 // Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
 // Напишите программу, которая будет построчно выводить массив,
